@@ -28,32 +28,69 @@ namespace Assignment_2.Controllers
         /// <example>
         /// https://localhost:7125/api/J3/Secret?code=34100 >> left 100
         /// </example>
-        [HttpPost (template: "Secret")]
+        [HttpPost(template: "Secret")]
 
         public string Secret([FromForm] string code)
         {
-                int num1 = int.Parse(code[0].ToString());
-                int num2 = int.Parse(code[1].ToString());
-                int addition = num1 + num2;
+            int num1 = int.Parse(code[0].ToString());
+            int num2 = int.Parse(code[1].ToString());
+            int addition = num1 + num2;
 
-                string direction = "";
+            string direction = "";
 
-                if (addition == 0)
-                {
-                    direction = "Right";
-                }
-                else if (addition % 2 == 0)
-                {
-                    direction = "Right";
-                }
-                else
-                {
-                    direction = "Left";
-                }
+            if (addition == 0)
+            {
+                direction = "Right";
+            }
+            else if (addition % 2 == 0)
+            {
+                direction = "Right";
+            }
+            else
+            {
+                direction = "Left";
+            }
 
-                string steps = code.Substring(2);
+            string steps = code.Substring(2);
 
-                return direction + " " + steps;
+            return direction + " " + steps;
         }
     }
 }
+
+///I tried this code, it did not work entirely. Keeping here to showcase my work and understand the issue.
+/// public string Secret([FromForm] string code)
+///{
+///    string[] sush = code.Split(",");
+///       string linked = "";
+
+///for (int i = 0; i < sush.Length; i++)
+///{
+///string pushy = sush[i];
+
+///int num1 = int.Parse(pushy[0].ToString());
+///int num2 = int.Parse(pushy[1].ToString());
+///int addition = num1 + num2;
+
+///string direction = "";
+
+///if (addition == 0)
+///{
+///direction = "Right";
+///         }
+///         else if (addition % 2 == 0)
+///{
+///direction = "Right";
+///         }
+///         else
+///{
+///direction = "Left";
+///         }
+
+///string steps = pushy.Substring(2);
+///linked = direction + " " + steps;
+
+///       }
+///return linked = $"{linked},{linked}";
+/// }
+///  }
