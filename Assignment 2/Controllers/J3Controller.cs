@@ -28,9 +28,9 @@ namespace Assignment_2.Controllers
         /// <example>
         /// https://localhost:7125/api/J3/Secret?code=34100 >> left 100
         /// </example>
-        [HttpPost(template: "Secret")]
+        [HttpGet(template: "Secret")]
 
-        public string Secret([FromForm] string code)
+        public string Secret(string code)
         {
             int num1 = int.Parse(code[0].ToString());
             int num2 = int.Parse(code[1].ToString());
