@@ -9,16 +9,24 @@ namespace Assignment_2.Controllers
     public class J2Q2Controller : ControllerBase
     {
         /// <summary>
-        /// This code reads a message and outputs the mood of the sender.
+        /// Analyzes a text message and determines the overall mood based on emoticons.
+        /// The message is scanned for happy :-) and sad :-( emoticons.
+        /// - If neither is found, returns "none".
+        /// - If counts are equal, returns "unsure".
+        /// - If more happy emoticons, returns "happy".
+        /// - If more sad emoticons, returns "sad".
         /// </summary>
-        /// <param name="Message">Consists of a string of text along with characters.</param>
-        /// <returns>The mood of the sender after counting the emojis and classifying it.</returns>
+        /// <param name="Message">A single line of input text.</param>
+        /// <returns>The overall mood of the message: "happy", "sad", "unsure", or "none".</returns>
         /// HEADER: Content-Type: application/x-www-form-urlencoded
         /// <example>
-        /// https://localhost:7125/api/J2Q2/Mood Message=jhdsah:-) >> Happy
+        /// https://localhost:7125/api/Mood/Analyze?message=How are you :-) doing :-( today :-)? >> happy
         /// </example>
         /// <example>
-        /// https://localhost:7125/api/J2Q2/Mood Message=ydj8:-):-( >> Unsure
+        /// https://localhost:7125/api/Mood/Analyze?message=This:-(is str:-(:-(ange te:-)xt. >> sad
+        /// </example>
+        /// <example>
+        /// https://localhost:7125/api/Mood/Analyze?message=:) >> none
         /// </example>
         [HttpPost (template:"Mood")]
 

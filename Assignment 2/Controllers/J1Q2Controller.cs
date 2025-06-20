@@ -8,13 +8,27 @@ namespace Assignment_2.Controllers
     public class J1Q2Controller : ControllerBase
     {
         /// <summary>
-        /// This code informs user if they are before, after or on the special day
+        /// Determines whether a given date is before, after, or exactly on February 18.
         /// </summary>
-        /// <param name="day">User should input the date in number format</param>
-        /// <param name="month">User should input the month in number format</param>
-        /// <returns>A string of text informing the status as on the input date</returns>
-        /// HEADER: Content-Type: multipart/form-data
-        /// <example>curl -X "POST" -H "Content-Type: application/x-www-form-urlencoded" -d "day=28&month=1" "https://localhost:7125/api/J1Q2/Period" >> Before</example>
+        /// <param name="month">The numerical month (1 to 12).</param>
+        /// <param name="day">The numerical day of the month (valid for the given month).</param>
+        /// <returns>
+        /// Returns:
+        /// - "Before" if the date is before February 18
+        /// - "After" if the date is after February 18
+        /// - "Special" if the date is exactly February 18
+        /// </returns>
+        /// HEADER: Content-Type: application/x-www-form-urlencoded
+        /// <example>
+        /// https://localhost:7125/api/Date/Check?month=1&day=7 >> Before
+        /// </example>
+        /// <example>
+        /// https://localhost:7125/api/Date/Check?month=8&day=31 >> After
+        /// </example>
+        /// <example>
+        /// https://localhost:7125/api/Date/Check?month=2&day=18 >> Special
+        /// </example>
+        
         [HttpPost(template: "Period")]
 
         public string Period([FromForm] int day, [FromForm] int month)

@@ -8,16 +8,25 @@ namespace Assignment_2.Controllers
     public class J3Controller : ControllerBase
     {
         /// <summary>
-        /// This code converts the string input to the actual message intended.
+        /// Decodes a 5-digit numerical instruction into a direction and number of steps,based on rules left by Professor Santos to locate a secret biofuel formula.
+        /// The first two digits determine the direction:
+        /// - If the sum is odd, the direction is left.
+        /// - If the sum is even and not zero, the direction is right.
+        /// - If the sum is zero, use the direction from the previous instruction.
+        /// The last three digits represent the number of steps (always 100 or greater).
+        /// The sequence ends when the code is 99999 (which should not be processed).
         /// </summary>
-        /// <param name="code">Input of the numerical value/code.</param>
-        /// <returns>Returns the direction and the steps.</returns>
+        /// <param name="code">A 5-digit numeric instruction (e.g., 57234).</param>
+        /// <returns>Returns the decoded instruction: "left/right [steps]".</returns>
         /// HEADER: Content-Type: application/x-www-form-urlencoded
         /// <example>
-        /// https://localhost:7125/api/J3/Secret code=10909 >> Left 909
+        /// https://localhost:7125/api/J3/Secret?code=57234 >> right 234
         /// </example>
         /// <example>
-        /// https://localhost:7125/api/J3/Secret code=73647 >> Right 647
+        /// https://localhost:7125/api/J3/Secret?code=00907 >> right 907
+        /// </example>
+        /// <example>
+        /// https://localhost:7125/api/J3/Secret?code=34100 >> left 100
         /// </example>
         [HttpPost (template: "Secret")]
 
