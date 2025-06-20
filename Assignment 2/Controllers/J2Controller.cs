@@ -7,6 +7,16 @@ namespace Assignment_2.Controllers
     [ApiController]
     public class J2Controller : ControllerBase
     {
+        /// <summary>
+        /// This code gives the total heat in SHU based on the peppers added.
+        /// </summary>
+        /// <param name="Ingredients">all the peppers separated by a delimiter.</param>
+        /// <returns>The spice level in integer.</returns>
+        /// <example>
+        /// /api/J2/ChiliPeppers&Ingredients=Poblano,Cayenne,Thai,Poblano >> 118000
+        /// </example>
+       
+
         [HttpGet(template: "ChiliPeppers")]
 
         public int ChiliPeppers(string Ingredients)
